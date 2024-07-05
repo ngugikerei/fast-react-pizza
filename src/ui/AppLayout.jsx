@@ -4,6 +4,7 @@ import { Outlet, useNavigation } from 'react-router-dom';
 import Loader from './Loader';
 
 export default function AppLayout() {
+  //use navigation hook checks the applicat;ion state and returns idle, isloading or submitting
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
 
@@ -11,6 +12,7 @@ export default function AppLayout() {
     <div className="layout">
       {isLoading && <Loader />}
       <Header />
+
       <main>
         <Outlet />
       </main>

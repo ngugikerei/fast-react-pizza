@@ -4,8 +4,10 @@ import Home from './ui/Home.jsx';
 import Menu, { loader as menuLoader } from './features/menu/Menu.jsx';
 import Cart from './features/cart/Cart.jsx';
 import Error from './ui/Error.jsx';
-import CreateOrder from './features/order/CreateOrder.jsx';
-import Order from './features/order/Order.jsx';
+import CreateOrder, {
+  action as createOrderAction,
+} from './features/order/CreateOrder.jsx';
+import Order, { loader as orderLoader } from './features/order/Order.jsx';
 import AppLayout from './ui/AppLayout.jsx';
 
 //createBrowserRouter takes an array of objects
@@ -31,11 +33,14 @@ const router = createBrowserRouter([
       {
         path: '/order/new',
         element: <CreateOrder />,
+        action: createOrderAction,
       },
 
       {
         path: '/order/:orderID',
         element: <Order />,
+        errorElement: <Error />,
+        loader: orderLoader,
       },
     ],
   },
