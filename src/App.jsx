@@ -11,6 +11,7 @@ import Order, { loader as orderLoader } from './features/order/Order.jsx';
 import AppLayout from './ui/AppLayout.jsx';
 
 //createBrowserRouter takes an array of objects
+//the aray objects are the routes
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
