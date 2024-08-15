@@ -4,6 +4,7 @@ import { formatCurrency } from '../../utils/helpers';
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, getCurrentQuantityById } from '../cart/cartSlice'
 import DeleteItem from '../cart/DeleteItem'
+import UpdateItemQuantity from '../cart/UpdateItemQuantity'
 
 function MenuItem({ pizza }) {
     // eslint-disable-next-line no-unused-vars
@@ -48,7 +49,15 @@ function MenuItem({ pizza }) {
                             Sold out
                         </p>
                     )}
-                    {isInCart && <DeleteItem pizzaId={id}></DeleteItem>}
+                    {isInCart && (
+                        <div className="flex items-center gap-3 sm:gap-8">
+                            <UpdateItemQuantity
+                                pizzaId={id}
+                                currentQuantity={currentQuantity}
+                            />
+                            <DeleteItem pizzaId={id}></DeleteItem>
+                        </div>
+                    )}
 
                     {!soldOut && !isInCart && (
                         <Button type="small" onClick={handleAddToCart}>
